@@ -1,23 +1,32 @@
 {
-    "extends": ["eslint-config-airbnb-base", "prettier"],
-    "plugins": ["prettier"],
     "env": {
         "browser": true,
-        "node": true
+        "shared-node-browser": true,
+        "node": true,
+        "es6": true
+    },
+    "parser": "@typescript-eslint/parser",
+    "extends": [
+        "eslint:recommended",
+        "prettier",
+        "plugin:prettier/recommended",
+        "plugin:@typescript-eslint/recommended",
+        "plugin:import/recommended"
+    ],
+    "plugins": ["prettier", "import", "@typescript-eslint"],
+    "settings": {
+        "import/resolver": {
+            "node": {
+                "extensions": [".ts"]
+            }
+        }
     },
     "rules": {
-        "import/prefer-default-export": "off",
-        "no-case-declarations": "off",
-        "import/extensions": "off",
-        "consistent-return": "warn",
         "no-console": "warn",
+        "eqeqeq": "error",
+        "no-var": "error",
         "prefer-const": "error",
-        "sort-imports": [
-            "error",
-            {
-                "ignoreDeclarationSort": true
-            }
-        ],
+        "prettier/prettier": ["error", { "endOfLine": "auto" }],
         "import/order": [
             "error",
             {
@@ -34,9 +43,12 @@
                 "newlines-between": "never",
                 "pathGroupsExcludedImportTypes": ["builtin"]
             }
+        ],
+        "sort-imports": [
+            "error",
+            {
+                "ignoreDeclarationSort": true
+            }
         ]
-    },
-    "parserOptions": {
-        "ecmaVersion": "latest"
     }
 }
